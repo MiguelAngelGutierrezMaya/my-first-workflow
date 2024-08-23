@@ -47,3 +47,4 @@ jobs:
           ls -la
       - run: npm install
       - run: ls -la
+      - run: npx ts-node main.ts
