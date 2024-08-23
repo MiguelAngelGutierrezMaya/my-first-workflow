@@ -34,15 +34,16 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-
-      - uses: actions/setup-node@v4.0.3
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4.0.3
         with:
           # Set always-auth in npmrc.
           always-auth: false
           # Version Spec of the version to use. Examples: 12.x, 10.15.1, >=10.15.0.
           node-version: 20.14.0
-
-      - name: Setup Node.js environment
-        run: |
-          nodejs --version
+      - run: |
+          node --version
           npm --version
+          ls -la
+      - run: npm install
+      - run: ls -la
