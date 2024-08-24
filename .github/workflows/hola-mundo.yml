@@ -53,5 +53,5 @@ jobs:
         run: ls -la
       - name: Run main.ts
         run: npx ts-node main.ts
-      - name: Run hello-world.py
-        run: python hello-world.py
+      - name: Run hello_world.py
+        run: python hello_world.py
