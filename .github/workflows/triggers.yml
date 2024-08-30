@@ -1,0 +1,42 @@
+# This is a basic workflow to help you get started with Actions
+# triggers.yml => executes when a workflow is triggered
+
+name: Learn GitHub Actions (trigger)
+run-name: Learn GitHub Actions! (trigger)
+on:
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
+        type: choice
+        options:
+          - 'warning'
+          - 'error'
+          - 'debug'
+      tags:
+        description: 'Tags'
+        required: false
+        type: boolean
+      environment:
+        description: 'Environment'
+        required: true
+        type: environment
+  push:
+    branches:
+      - aprendiendo-github-actions
+  schedule:
+    - cron: '30 5,17 * * *'
+jobs:
+  log-the-inputs:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "Log level: $LEVEL"
+          echo "Tags: $TAGS"
+          echo "Environment: $ENVIRONMENT"
+        env:
+          LEVEL: ${{ inputs.logLevel }}
+          TAGS: ${{ inputs.tags }}
+          ENVIRONMENT: ${{ inputs.environment }}
