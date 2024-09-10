@@ -1,0 +1,56 @@
+# File: contextos.yml
+# Description: This file will introduce you to the main contexts in GitHub Actions
+
+name: Learn GitHub Actions (Contexts)
+run-name: Learn GitHub Actions! (Contexts)
+on: push
+jobs:
+  check-main:
+    if: ${{ github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Check out the main branch
+        run: echo "You are on the main branch"
+  check-pr:
+    if: ${{ github.event_name == 'pull_request' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Check out the pull request
+        run: echo "You are on a pull request"
+  check-issue:
+    if: ${{ github.event_name == 'issues' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Check out the issue
+        run: echo "You are on an issue"
+  check-context:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Check out the context
+        run: echo "You are on a ${{ github.event_name }}"
+      - name: Check out the context
+        run: echo "You are on a ${{ github.ref }}"
+      - name: Check out the context
+        run: echo "You are on a ${{ github.actor }}"
+      - name: Check out the context
+        run: echo "You are on a ${{ github.repository }}"
+      - name: Check out the job context
+        run: echo "You are on a ${{ job.status }}"
+      - name: Check out the job context
+        run: echo "You are on a ${{ job.needs }}"
+      - name: Check out the job context
+        run: echo "You are on a ${{ job.outputs }}"
+      - name: Check out the job context
+        run: echo "You are on a ${{ job.services }}"
+      - name: Check out the steps context
+        run: echo "You are on a ${{ steps }}"
+      - name: Check out the steps context
+        run: echo "You are on a ${{ steps.check-context.outputs }}"
