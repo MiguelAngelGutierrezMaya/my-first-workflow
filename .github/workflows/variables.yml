@@ -1,0 +1,19 @@
+# File: variables.yml
+
+name: Learn GitHub Actions (Variables)
+run-name: Learn GitHub Actions! (Variables)
+on: push
+env:
+  WEEKDAY: Monday
+jobs:
+  greetings-variable:
+    runs-on: ubuntu-latest
+    env:
+      GREETING: Hello, learner!
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Set environment variable
+        run: echo "$GREETING, $NAME, Today is $WEEKDAY"
+        env:
+          NAME: Miguel
