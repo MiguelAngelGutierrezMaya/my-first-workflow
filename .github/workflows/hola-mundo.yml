@@ -36,7 +36,7 @@ jobs:
           echo $GITHUB_ENV
       # Setup Node.js environment and install dependencies
       - name: Setup Node.js environment
-        uses: actions/setup-node@v4.0.3
+        uses: actions/setup-node@v4.0.4
         with:
           # Set always-auth in npmrc.
           always-auth: false
